@@ -1,24 +1,13 @@
 # frozen_string_literal: true
 
-require 'strait/version'
-require 'strait/dsl'
 require 'strait/configuration'
+require 'strait/dsl'
+require 'strait/rate_limit_exceeded'
 require 'strait/rule'
+require 'strait/version'
 
 # A rate-limiter which provides natural defenses for your nation-state. Or your API.
 class Strait
-  class RateLimitExceeded < StandardError
-    def initialize(period:, count:, total:)
-      @period = period
-      @count = count
-      @total = total
-    end
-
-    def to_s
-      "Rate Limit Exceeded: #{@count} per #{@period} seconds"
-    end
-  end
-
   attr_reader :name, :config
 
   def initialize(name, rules: [], **config)
