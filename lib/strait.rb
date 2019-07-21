@@ -19,7 +19,15 @@ class Strait
   end
 
   def limit!(user)
-    rules.each { |rule| rule.call(user) }
+    # Build a hash of { rule => acceptable } structure
+    results = rules.map { |rule| [rule, rule.call(user)] }.to_h
+
+    return if results.values.all?(true)
+
+    # Raise an exception for the first rate limit hit
+    results.each do |rule, acceptable|
+      raise Strait::RateLimitExceeded, rule.to_h unless acceptable
+    end
   end
 
   def self.configuration=(config)

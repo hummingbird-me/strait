@@ -9,9 +9,11 @@ class Strait
     end
 
     def call(user)
-      if period_count_for(user) > @rule[:count]
-        raise Strait::RateLimitExceeded, @rule
-      end
+      period_count_for(user) <= @rule[:count]
+    end
+
+    def to_h
+      @rule
     end
 
     private

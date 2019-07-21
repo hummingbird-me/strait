@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 class Strait
   class RateLimitExceeded < StandardError
-    def initialize(period:, count:, total:)
+    def initialize(period:, count:, **_other)
       @period = period
       @count = count
-      @total = total
     end
 
     def to_s

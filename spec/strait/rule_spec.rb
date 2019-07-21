@@ -8,24 +8,24 @@ RSpec.describe Strait::Rule do
   let(:pool) { ConnectionPool.new(pool: 1) { redis } }
   let(:config) { OpenStruct.new(redis_pool: pool) }
 
-  context 'with the rate limit exceeded' do
-    let(:rule) do
-      Strait::Rule.new(
-        name: 'test',
-        rule: { period: 60, count: 5, buckets: 60 },
-        config: config
-      )
-    end
-    before do
-      key = rule.send(:key_for, 'mirai')
-      bucket = rule.send(:bucket_for, Time.now.to_i - 10)
-      redis.hset(key, bucket, 50)
-    end
+  describe '#call' do
+    context 'with the rate limit exceeded' do
+      let(:rule) do
+        Strait::Rule.new(
+          name: 'test',
+          rule: { period: 60, count: 5, buckets: 60 },
+          config: config
+        )
+      end
+      before do
+        key = rule.send(:key_for, 'mirai')
+        bucket = rule.send(:bucket_for, Time.now.to_i - 10)
+        redis.hset(key, bucket, 50)
+      end
 
-    it 'should raise Strait::RateLimitExceeded' do
-      expect {
-        rule.call('mirai')
-      }.to raise_error(Strait::RateLimitExceeded)
+      it 'should return false' do
+        expect(rule.call('mirai')).to be(false)
+      end
     end
   end
 
@@ -39,9 +39,7 @@ RSpec.describe Strait::Rule do
     bucket = rule.send(:bucket_for, Time.now.to_i - 10)
     redis.hset(key, bucket, 50)
 
-    expect {
-      rule.call('mirai')
-    }.not_to raise_error
+    expect(rule.call('mirai')).to be(true)
   end
 
   it 'should delete old buckets from the hash' do
@@ -69,8 +67,6 @@ RSpec.describe Strait::Rule do
     bucket = rule.send(:bucket_for, Time.now.to_i - 120)
     redis.hset(key, bucket, 50)
 
-    expect {
-      rule.call('mirai')
-    }.not_to raise_error
+    expect(rule.call('mirai')).to be(true)
   end
 end
