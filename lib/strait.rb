@@ -7,7 +7,17 @@ require 'strait/rule'
 
 # A rate-limiter which provides natural defenses for your nation-state. Or your API.
 class Strait
-  class RateLimitExceeded < StandardError; end
+  class RateLimitExceeded < StandardError
+    def initialize(period:, count:, total:)
+      @period = period
+      @count = count
+      @total = total
+    end
+
+    def to_s
+      "Rate Limit Exceeded: #{@count} per #{@period} seconds"
+    end
+  end
 
   attr_reader :name, :config
 
