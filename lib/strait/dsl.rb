@@ -2,8 +2,10 @@
 
 class Strait
   class DSL
-    def initialize(rules = [], &block)
-      @rules = rules
+    attr_reader :rules
+
+    def initialize(&block)
+      @rules = []
       instance_eval(&block)
     end
 
