@@ -1,5 +1,16 @@
 # Strait
 
+[![Coverage][shield-coverage]][coverage]
+[![Maintainability][shield-maintainability]][maintainability]
+[![Travis CI][shield-travis]][travis]
+
+[shield-coverage]: https://img.shields.io/codeclimate/coverage/hummingbird-me/strait.svg?logo=code-climate&style=for-the-badge
+[coverage]: https://codeclimate.com/github/hummingbird-me/strait/progress/coverage
+[shield-maintainability]: https://img.shields.io/codeclimate/maintainability/hummingbird-me/strait.svg?logo=code-climate&style=for-the-badge
+[maintainability]: https://codeclimate.com/github/hummingbird-me/strait/progress/maintainability
+[shield-travis]: https://img.shields.io/travis/com/hummingbird-me/strait/master.svg?logo=travis-ci&logoColor=white&style=for-the-badge
+[travis]: https://travis-ci.com/hummingbird-me/strait
+
 Strait is a rate-limiting library designed to provide security you don't need to think about.  Whenever you have code to protect, put a Strait in front of it.
 
 It strikes an excellent balance between accuracy and memory usage, with a default accuracy of 1/60th of the limit period.
