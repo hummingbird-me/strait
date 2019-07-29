@@ -38,7 +38,7 @@ class Strait
           end
         end
 
-        redis.hdel(key, *results[:delete])
+        redis.hdel(key, *results[:delete]) unless results[:delete].empty?
         results[:total]
       end
     end
