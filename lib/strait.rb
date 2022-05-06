@@ -26,7 +26,7 @@ class Strait
 
     # Raise an exception for the first rate limit hit
     results.each do |rule, acceptable|
-      raise Strait::RateLimitExceeded, rule.to_h unless acceptable
+      raise Strait::RateLimitExceeded, **rule.to_h unless acceptable
     end
   end
 
