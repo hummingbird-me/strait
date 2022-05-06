@@ -2,16 +2,16 @@
 
 [![Coverage][shield-coverage]][coverage]
 [![Maintainability][shield-maintainability]][maintainability]
-[![Travis CI][shield-travis]][travis]
+[![Github Actions][shield-actions]][actions]
 
 [shield-coverage]: https://img.shields.io/codeclimate/coverage/hummingbird-me/strait.svg?logo=code-climate&style=for-the-badge
 [coverage]: https://codeclimate.com/github/hummingbird-me/strait/progress/coverage
 [shield-maintainability]: https://img.shields.io/codeclimate/maintainability/hummingbird-me/strait.svg?logo=code-climate&style=for-the-badge
 [maintainability]: https://codeclimate.com/github/hummingbird-me/strait/progress/maintainability
-[shield-travis]: https://img.shields.io/travis/com/hummingbird-me/strait/master.svg?logo=travis-ci&logoColor=white&style=for-the-badge
-[travis]: https://travis-ci.com/hummingbird-me/strait
+[shield-actions]: https://img.shields.io/github/checks-status/hummingbird-me/strait/main?style=for-the-badge
+[actions]: https://github.com/hummingbird-me/strait/actions
 
-Strait is a rate-limiting library designed to provide security you don't need to think about.  Whenever you have code to protect, put a Strait in front of it.
+Strait is a rate-limiting library designed to provide security you don't need to think about. Whenever you have code to protect, put a Strait in front of it.
 
 It strikes an excellent balance between accuracy and memory usage, with a default accuracy of 1/60th of the limit period.
 
@@ -43,7 +43,7 @@ class SecureThingController
 end
 ```
 
-Well dang, that's no good.  Anybody could send thousands of requests to this and take your entire site down, right as you're meeting with an important investor!
+Well dang, that's no good. Anybody could send thousands of requests to this and take your entire site down, right as you're meeting with an important investor!
 
 Let's put a Strait in front of it!
 
@@ -64,15 +64,15 @@ class SecureThingController
 end
 ```
 
-Viola, just like that, we've got rate limiting.  Now a user is limited to 5 per minute!
+Viola, just like that, we've got rate limiting. Now a user is limited to 5 per minute!
 
 ## Accuracy
 
-To understand why Strait isn't perfectly accurate, we should understand how it's implemented.  Strait is based on [the bucketed-log pattern made popular by Figma][figma-post], which chooses lower memory usage over perfect accuracy.  Despite this decreased accuracy, it fails secure, and should have enough accuracy to not be noticed.
+To understand why Strait isn't perfectly accurate, we should understand how it's implemented. Strait is based on [the bucketed-log pattern made popular by Figma][figma-post], which chooses lower memory usage over perfect accuracy. Despite this decreased accuracy, it fails secure, and should have enough accuracy to not be noticed.
 
-Each rate limiter stores data as a set of _N buckets per period_.  For example, with 10 buckets and a 1-hour period, each bucket covers 6 minutes.  To check the limit, we sum all buckets which overlap the last hour.  If the buckets are large (like 6 minutes) this can be up to one bucket longer than the period, resulting in a longer block than 100% accuracy.
+Each rate limiter stores data as a set of _N buckets per period_. For example, with 10 buckets and a 1-hour period, each bucket covers 6 minutes. To check the limit, we sum all buckets which overlap the last hour. If the buckets are large (like 6 minutes) this can be up to one bucket longer than the period, resulting in a longer block than 100% accuracy.
 
-The default accuracy in Strait is _60 buckets per period_.  For a 1-hour period, this is up to 1 minute of inaccuracy.  For a 1-minute period, it's up to 1-second.  For a 1-day period, it's up to 24 minutes.  You can adjust this to increase accuracy, but it will also use more memory.
+The default accuracy in Strait is _60 buckets per period_. For a 1-hour period, this is up to 1 minute of inaccuracy. For a 1-minute period, it's up to 1-second. For a 1-day period, it's up to 24 minutes. You can adjust this to increase accuracy, but it will also use more memory.
 
 [figma-post]: https://www.figma.com/blog/an-alternative-approach-to-rate-limiting/
 
