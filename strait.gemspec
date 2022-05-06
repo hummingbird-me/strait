@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors = ['Emma Lejeck']
   spec.email = ['nuck@kitsu.io']
 
-  spec.summary = 'Rate-limiting to defend your nation-state'
+  spec.summary = 'Rate-limiting to defend your nation-state from pillagers'
   spec.description = <<~DESC
     Strait is a rate-limiting library designed to provide security you don't need to think about.
     Whenever you have code to protect, put a Strait in front of it.
@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = 'https://github.com/hummingbird-me/strait'
-  # spec.metadata["changelog_uri"] = "https://github.com/hummingbird-me/strait/releases"
+  spec.metadata["changelog_uri"] = "https://github.com/hummingbird-me/strait/releases"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
