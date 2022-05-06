@@ -10,12 +10,12 @@ require 'strait/version'
 class Strait
   attr_reader :name, :config
 
-  def initialize(name, rules: [], **config)
+  def initialize(name, rules: [], **config, &block)
     @name = name
     @raw_rules = rules
     @config = Strait::Configuration.default.merge(config)
 
-    @raw_rules += Strait::DSL.new(&Proc.new).rules if block_given?
+    @raw_rules += Strait::DSL.new(&block).rules unless block.nil?
   end
 
   def limit!(user)
