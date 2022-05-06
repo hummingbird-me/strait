@@ -43,3 +43,8 @@ jobs:
       - name: Run Tests
         if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
         run: bundle exec rspec
+
+      - name: Publish code coverage
+        uses: paambaati/codeclimate-action@v3.0.0
+        env:
+          CC_TEST_REPORTER_ID: 1f7851d1df80cc24da6903abf795ee7a81a60b2cceb7eedd147c59c4ec232dd4
