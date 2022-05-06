@@ -12,7 +12,7 @@ RSpec.describe Strait::RateLimitExceeded do
 
       expect {
         Strait::RateLimitExceeded.new(period: 60, count: 10)
-      }.not_to raise_error(ArgumentError)
+      }.not_to raise_error
     end
   end
 
