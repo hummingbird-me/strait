@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    strait (1.1.0)
+    strait (1.2.0)
       connection_pool (>= 2.0, < 3.0)
       redis (~> 4.0, >= 3.0)
 
