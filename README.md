@@ -3,6 +3,7 @@
 [![Coverage][shield-coverage]][coverage]
 [![Maintainability][shield-maintainability]][maintainability]
 [![Github Actions][shield-actions]][actions]
+[![Rubygem Version][shield-version]][version]
 
 [shield-coverage]: https://img.shields.io/codeclimate/coverage/hummingbird-me/strait.svg?logo=code-climate&style=for-the-badge
 [coverage]: https://codeclimate.com/github/hummingbird-me/strait/progress/coverage
@@ -10,6 +11,8 @@
 [maintainability]: https://codeclimate.com/github/hummingbird-me/strait/progress/maintainability
 [shield-actions]: https://img.shields.io/github/checks-status/hummingbird-me/strait/main?style=for-the-badge
 [actions]: https://github.com/hummingbird-me/strait/actions
+[shield-version]: https://img.shields.io/gem/v/strait?label=%20&logo=rubygems&logoColor=white&style=for-the-badge
+[version]: https://rubygems.org/gems/strait
 
 Strait is a rate-limiting library designed to provide security you don't need to think about. Whenever you have code to protect, put a Strait in front of it.
 
