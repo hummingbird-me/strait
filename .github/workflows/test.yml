@@ -10,6 +10,9 @@ on:
     branches:
       - "**:**"
 
+env:
+  CC_TEST_REPORTER_ID: 1f7851d1df80cc24da6903abf795ee7a81a60b2cceb7eedd147c59c4ec232dd4
+
 jobs:
   test:
     name: RSpec Test Suite
@@ -46,5 +49,3 @@ jobs:
 
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v3.0.0
-        env:
-          CC_TEST_REPORTER_ID: 1f7851d1df80cc24da6903abf795ee7a81a60b2cceb7eedd147c59c4ec232dd4
