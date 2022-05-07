@@ -24,14 +24,10 @@ jobs:
         ruby:
           - ruby-2.6
           - ruby-2.7
+          - ruby-3.0
+          - ruby-3.1
+          - truffleruby-20
         experimental: [false]
-        include:
-          - ruby: truffleruby-20
-            experimental: true
-          - ruby: ruby-3.0
-            experimental: true
-          - ruby: ruby-3.1
-            experimental: true
 
     steps:
       - name: Checkout Repository
