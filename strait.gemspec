@@ -36,5 +36,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'simplecov', '~> 0.17'
   spec.add_development_dependency 'timecop', '~> 0.9'
   spec.add_runtime_dependency 'connection_pool', '>= 2.0', '< 3.0'
-  spec.add_runtime_dependency 'redis', '>= 3.0', '~> 4.0'
+  spec.add_runtime_dependency 'redis', '>= 4', '< 6'
 end
