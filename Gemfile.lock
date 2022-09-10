@@ -3,7 +3,7 @@ PATH
   specs:
     strait (1.2.0)
       connection_pool (>= 2.0, < 3.0)
-      redis (~> 4.0, >= 3.0)
+      redis (>= 4, < 6)
 
 GEM
   remote: https://rubygems.org/
@@ -14,7 +14,10 @@ GEM
     mock_redis (0.32.0)
       ruby2_keywords
     rake (13.0.6)
-    redis (4.7.1)
+    redis (5.0.4)
+      redis-client (>= 0.7.4)
+    redis-client (0.8.0)
+      connection_pool
     rspec (3.11.0)
       rspec-core (~> 3.11.0)
       rspec-expectations (~> 3.11.0)
